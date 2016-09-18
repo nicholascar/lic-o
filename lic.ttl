@@ -1,0 +1,31 @@
+# baseURI: http://promsns.org/def/lic
+# imports: http://promsns.org/def/agr
+# imports: http://schema.theodi.org/odrs/index.ttl
+
+@prefix : <http://promsns.org/def/lic#> .
+@prefix agr: <http://promsns.org/def/agr#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://promsns.org/def/lic>
+  rdf:type owl:Ontology ;
+  dc:creator "Nicholas Car"^^xsd:string ;
+  dcterms:created "2016-09-18"^^xsd:date ;
+  dcterms:modified "2016-09-18"^^xsd:date ;
+  rdfs:label "Licenses ontology"^^xsd:string ;
+  owl:imports <http://promsns.org/def/agr> ;
+  owl:imports <http://schema.theodi.org/odrs/index.ttl> ;
+  owl:versionInfo "v1.0"^^xsd:string ;
+.
+:License
+  rdf:type owl:Class ;
+  rdfs:comment "This license class represents the license object and the American spelling is used where license with an 's' is the same for both license noun and verb as opposed to the Australian spelling which uses a 'c' for the noun."^^xsd:string ;
+  rdfs:label "license"^^xsd:string ;
+  rdfs:subClassOf agr:Agreement ;
+  skos:altLabel "licence"^^xsd:string ;
+.

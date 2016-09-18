@@ -7,7 +7,7 @@ This Licenses ontology is a tiny ontology that specialises the Agreements ontolo
 
 
 ## Ontology document
-Turtle format: [lic.ttl](lic.ttl)
+Turtle format: [lic.ttl](lic.ttl)  
 HTML format: [lic.html](lic.html)
 
 

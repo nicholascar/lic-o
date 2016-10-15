@@ -1,0 +1,115 @@
+# imports: http://promsns.org/def/agr
+# imports: http://promsns.org/def/lic
+# imports: http://schema.theodi.org/odrs/index.ttl
+
+@prefix : <http://promsns.org/id/requirement/> .
+@prefix agr: <http://promsns.org/def/agr#> .
+@prefix lic: <http://promsns.org/def/lic#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+:
+  a owl:Ontology ;
+  dc:creator "Nicholas Car"^^xsd:string ;
+  dcterms:created "2016-10-16"^^xsd:date ;
+  dcterms:creator <http://promsns.org/id/person/nicholascar> ;
+  dcterms:modified "2016-10-16"^^xsd:date ;
+  rdfs:comment """This is a list of Requirement class objects. Requirements are definied by the Agreements ontology."""@en ;
+  rdfs:label "Requirements register"@en ;
+  owl:imports <http://promsns.org/def/agr> ;
+  owl:imports <http://promsns.org/def/lic> ;
+.
+
+:Adapt
+  a agr:Requirement ;
+  rdfs:label "Adapt"@en ;
+  agr:requirementLevel agr:MAY ;
+  dc:source "Creative commons CC-BY 4.0 text (https://creativecommons.org/licenses/by/4.0/)" ;
+  skos:definition "Remix, transform, and build upon the material for any purpose, even commercially"@en ;
+.
+
+:Attribution
+  a agr:Requirement ;
+  rdfs:label "Attribution"@en ;
+  agr:requirementLevel agr:MUST ;
+  dc:source "Creative commons CC-BY 4.0 text (https://creativecommons.org/licenses/by/4.0/)" ;
+  skos:definition "You must give appropriate credit, provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use."@en ;
+.
+
+:GaInternalUseOnly
+  a agr:Requirement ;
+  rdfs:label "GA internal use only"@en ;
+  agr:requirementLevel agr:MUST ;
+  rdfs:comment "Any user of this data must be an Agent within the org:Organisation Geoscience Australia"@en ;
+  skos:definition "Data is for GA's internal use only"@en ;
+.
+
+:MandatedRightsStatement
+  a agr:Requirement ;
+  rdfs:label "Mandated Rights Statement"@en ;
+  rdfs:comment "This Requirement requires a particular RightsStatement to be used for the dataset whose License contains it"@en ;
+  rdfs:domain lic:License ;
+  rdfs:label "Mandated RightsStatement"@en ;
+  rdfs:range <http://schema.theodi.org/odrs#RightsStatement> ;
+.
+
+:MustShowNotice
+  a agr:Requirement ;
+  rdfs:label "Must show notice"@en ;
+  rdfs:comment "An Agent wishing to use a dataset for which this Requirement is applicable must view a notice"@en ;
+  rdfs:label "Must see notice"@en ;
+.
+
+:NoAdditionalRestrictions
+  a agr:Requirement ;
+  rdfs:label "No additional restrictions"@en ;
+  agr:requirementLevel agr:MUST_NOT ;
+  dc:source "Creative commons CC-BY 4.0 text (https://creativecommons.org/licenses/by/4.0/)" ;
+  skos:definition "You may not apply legal terms or technological measures that legally restrict others from doing anything the license permits."@en ;
+.
+
+:NoWarranties
+  a agr:Requirement ;
+  rdfs:label "No Warranties"@en ;
+  agr:requirementLevel agr:MUST_NOT ;
+  dc:source "Creative commons CC-BY 4.0 text (https://creativecommons.org/licenses/by/4.0/)" ;
+  rdfs:comment "You may not require a warranty from the license issuer."@en ;
+  skos:definition "No warranties are given. The license may not give you all of the permissions necessary for your intended use. For example, other rights such as publicity, privacy, or moral rights may limit how you use the material."@en ;
+.
+
+:NotForPublicDomainWork
+  a agr:Requirement ;
+  rdfs:label "Not for Public Domain works"@en ;
+  agr:requirementLevel agr:OPTIONAL ;
+  dc:source "Creative commons CC-BY 4.0 text (https://creativecommons.org/licenses/by/4.0/)" ;
+  skos:definition "You do not have to comply with the license for elements of the material in the public domain or where your use is permitted by an applicable exception or limitation."@en ;
+.
+
+:NoticeToBeViewed
+  a agr:Requirement ;
+  rdfs:label "Notice must be viewed"@en ;
+  agr:requirementLevel agr:MUST ;
+  rdfs:comment "A notice must be viewed before access to data is given"@en ;
+  skos:definition "A notice must be viewed before access to data is given"@en ;
+.
+
+:RedistributedWithNewAgreement
+  a agr:Requirement ;
+  rdfs:label "Redistributed with a new Agreement"@en ;
+  agr:requirementLevel agr:MUST_NOT ;
+  rdfs:comment "The Agreement which this Requirement pertains to does not allow Persons other than members of Geoscience Australia use this data."@en ;
+  skos:definition "Data cannot be redistributed by GA member to third parties unless there is a new agreement between GA and RSES"@en ;
+.
+
+:Share
+  a agr:Requirement ;
+  rdfs:label "Share"@en ;
+  agr:requirementLevel agr:MAY ;
+  dc:source "Creative commons CC-BY 4.0 (https://creativecommons.org/licenses/by/4.0/)" ;
+  skos:definition "Copy and redistribute the material in any medium or format"@en ;
+.

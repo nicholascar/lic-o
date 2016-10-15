@@ -14,19 +14,12 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-agr:Requirement
-  rdfs:subClassOf [
-      rdf:type owl:Restriction ;
-      owl:cardinality "1"^^xsd:nonNegativeInteger ;
-      owl:onProperty skos:definition ;
-    ] ;
-.
 <http://promsns.org/def/lic>
   rdf:type owl:Ontology ;
   dc:creator "Nicholas Car" ;
   dcterms:created "2016-09-18"^^xsd:date ;
   dcterms:creator <http://promsns.org/id/person/nicholascar> ;
-  dcterms:modified "2016-10-13"^^xsd:date ;
+  dcterms:modified "2016-10-16"^^xsd:date ;
   rdfs:comment """This ontology specialises the Agreements Ontology (http://promsnns.org/def/agr) to specifically address the needs of data licensing. It borrows heavily from the Creative Commons Rights Expression Language (http://labs.creativecommons.org/demos/ns/) and the Open Data Initiative's Open Data Rights Statement Vocabulary (http://schema.theodi.org/odrs/) but hopes to be far more useful for machine-reading applications such as smart repositories that can autonomously calculate when and how to provide access to datasets based on licensing conditions.
 
 This ontology follows the pattern set in the Agreements ontology by defining a license as a collection of requirements for action ob behalf of parties wishing to access or use data. A requirement could be to reference the creator of the dataset in derived data (attribution) or not to use data for commercial purposes. This promotion of individual 'requirements' to first-class objects allows very many licenses to be assembled from a small set of requirements which alows reasonably easy to use and yet somewhat customisable licenses to be created which may be better or more practical than either just restricting data access or mandating the use of standard licenses such as Creative Commons Attribution 4.0; two extreem positions."""@en ;
@@ -36,27 +29,7 @@ This ontology follows the pattern set in the Agreements ontology by defining a l
   owl:imports <http://www.w3.org/ns/prov-o> ;
   owl:versionInfo "v1.0" ;
 .
-:Adapt
-  rdf:type agr:Requirement ;
-  agr:requirementLevel agr:MAY ;
-  dc:source "Creative commons CC-BY 4.0 text (https://creativecommons.org/licenses/by/4.0/)" ;
-  skos:definition "Remix, transform, and build upon the material for any purpose, even commercially"@en ;
-.
-:Attribution
-  rdf:type agr:Requirement ;
-  agr:requirementLevel agr:MUST ;
-  dc:source "Creative commons CC-BY 4.0 text (https://creativecommons.org/licenses/by/4.0/)" ;
-  skos:definition "You must give appropriate credit, provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use."@en ;
-.
-<http://promsns.org/def/lic#CC-BY-4.0>
-  rdf:type :License ;
-.
-:GA_Internal_use_only
-  rdf:type agr:Requirement ;
-  agr:requirementLevel agr:MUST ;
-  rdfs:comment "Any user of this data must be an Agent within the org:Organisation Geoscience Australia"@en ;
-  skos:definition "Data is for GA's internal use only"@en ;
-.
+
 :License
   rdf:type owl:Class ;
   rdfs:comment """This license class represents a license object such as that which is applied to intellectual works and specifies the conditions of their use. It is identical in concept to the License class presented by the Creative Commons Rights Expression Language class and the Open Data Rights Statement Vocabulary's License class that is derived from the CC class but it is different in construction. This license class is a entirely a collection of individual  requirements (agr:Requirements) and contains no instruction itself. For this reason it is modelled as a skos:Collection, not a skos:Concept.
@@ -68,42 +41,7 @@ The American spelling is used where license with an 's' is the same for both lic
   rdfs:subClassOf agr:Agreement ;
   skos:altLabel "licence"@en ;
 .
-:No_Additional_Restrictions
-  rdf:type agr:Requirement ;
-  agr:requirementLevel agr:MUST_NOT ;
-  dc:source "Creative commons CC-BY 4.0 text (https://creativecommons.org/licenses/by/4.0/)" ;
-  skos:definition "You may not apply legal terms or technological measures that legally restrict others from doing anything the license permits."@en ;
-.
-:No_Warranties_are_given
-  rdf:type agr:Requirement ;
-  agr:requirementLevel agr:MUST_NOT ;
-  dc:source "Creative commons CC-BY 4.0 text (https://creativecommons.org/licenses/by/4.0/)" ;
-  rdfs:comment "You may not require a warranty from the license issuer."@en ;
-  skos:definition "No warranties are given. The license may not give you all of the permissions necessary for your intended use. For example, other rights such as publicity, privacy, or moral rights may limit how you use the material."@en ;
-.
-:Not_for_Public_Domain_work
-  rdf:type agr:Requirement ;
-  agr:requirementLevel agr:OPTIONAL ;
-  dc:source "Creative commons CC-BY 4.0 text (https://creativecommons.org/licenses/by/4.0/)" ;
-  skos:definition "You do not have to comply with the license for elements of the material in the public domain or where your use is permitted by an applicable exception or limitation."@en ;
-.
-:Passed_with_new_agreement
-  rdf:type agr:Requirement ;
-  agr:requirementLevel agr:MUST_NOT ;
-  rdfs:comment "The Agreement which this Requirement pertains to does not allow Persons other than members of Geoscience Australia use this data."@en ;
-  skos:definition "Data cannot be passed to the third party unless there is a new agreement between GA and RSES"@en ;
-.
-:RSES_ANU_GA
-  rdf:type :License ;
-  agr:requires :GA_Internal_use_only ;
-  agr:requires :Passed_with_new_agreement ;
-.
-:Share
-  rdf:type agr:Requirement ;
-  agr:requirementLevel agr:MAY ;
-  dc:source "Creative commons CC-BY 4.0 (https://creativecommons.org/licenses/by/4.0/)" ;
-  skos:definition "Copy and redistribute the material in any medium or format"@en ;
-.
+
 :licenseIssuer
   rdf:type owl:ObjectProperty ;
   rdfs:comment "This property indicates who the issuer of a particular license instance is. It allows direct indication wich may be needed whe there are multiple Agents associated with an Entity and it is unclear who the issuer is."@en ;
